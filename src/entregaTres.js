@@ -1,11 +1,10 @@
-const fs = require("fs");
-const { pid } = require("process");
-const { json } = require("stream/consumers");
+import fs from 'fs';
+
 
 class ProductManager {
     
-        constructor(path) {
-            this.path = path;
+        constructor() {
+            this.path = './src/product.json';
         }
     
         async addProduct(productInfo) {
@@ -28,13 +27,16 @@ class ProductManager {
         }
     
         async getProducts() {
-        let product = []
-        if (fs.existsSync(this.path)){
-            const data = await fs.promises.readFile(this.path, 'utf-8');
-            product = JSON.parse(data);
-        }
-        return product
-        }
+            try {
+            if(fs.existsSync(this.path)){        
+                    const data = await fs.promises.readfile(this.path, 'utf8');
+                    porduct = JSON.parse(data);
+                }	
+                await fs.promises.writeFile(this.path, JSON.stringify([]))
+                return [];
+            } catch (e){
+                throw new Error(e)
+        }}
     
         async getProductById(pid) {
         let found = await this.getProducts();
@@ -72,29 +74,7 @@ class ProductManager {
         }
     }
     
-    const product = {
-        title: 'play 6',
-        description: 'gamer',
-        price: 9500,
-        thumbnail: "not found",
-        code: 'p1',
-        stock: 5,
-    };
-    const product2 = {
-        title: 'play 5',
-        description: 'gamer',
-        price: 10500,
-        thumbnail: "not found",
-        code: 'p2',
-        stock: 15,
-    };
     
-    const productManager = new ProductManager("products.json");
     
-    productManager.addProduct(product).then(response => {
-        console.log(response);
-    })
-    //productManager.addProduct(product2).then(response => {
-    //    console.log(response);
-    //})
     
+    export default new ProductManager ("./src/productList.json")

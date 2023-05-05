@@ -1,0 +1,27 @@
+[
+    
+    {
+        "title": "play 6",
+        "description": "gamer",
+        "price": 9500,
+        "thumbnail": "not found",
+        "code": "p1",
+        "stock": 5
+    },
+    {
+        "title": "play 5",
+        "description": "gamer",
+        "price": 10500,
+        "thumbnail": "not found",
+        "code": "p2",
+        "stock": 15
+    },
+    {
+        "title": "snes",
+        "description": "retro",
+        "price": 15000,
+        "thumbnail":"not found",
+        "code": "sn1",
+        "stock": 2
+    }
+]
